@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Paylocity Clean Timesheet",
+  "version": "3.0",
+  "description": "A sane UI for Paylocity timesheets with 4 PM daily reminder.",
+  "permissions": [
+    "alarms",
+    "notifications",
+    "tabs",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://webtime2.paylocity.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://webtime2.paylocity.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    },
+    "default_title": "Paylocity Timesheet",
+    "default_popup": "popup.html"
+  }
+}
