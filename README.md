@@ -17,11 +17,11 @@ A Chrome/Brave extension that replaces Paylocity's timesheet UI with a fast, key
 
 ## Installation (Chrome Extension)
 
-### Step 1 — Download the extension
+### Step 1 — Download and extract the extension
 
 ### Step 2 — Open Chrome Extensions
 
-In Chrome, go to `chrome://extensions` or `brave://extensions` or open the menu → **More tools** → **Extensions**.
+In Chrome, go to `chrome://extensions` or open the menu → **More tools** → **Extensions**.
 
 > Chrome Extensions page (`chrome://extensions`)[![alt text](image.png)]
 
