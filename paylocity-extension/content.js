@@ -968,9 +968,14 @@
                 payTypeId: r.jc.payTypeId || '-1',
             }));
 
+            const di = +Object.entries(state.days).find(([, d]) => d.date === today)[0];
+
             const grid = codeList.map(() => ({}));
-            sortedDays.forEach(({ di, entries }) => {
-                Object.entries(entries).forEach(([eiStr, entry]) => {
+            // Only populate grid for today — other days must not appear here so
+            // submitTimesheet leaves their existing entries untouched (pass-through path).
+            const todayDay = state.days[di];
+            if (todayDay) {
+                Object.entries(todayDay.entries).forEach(([eiStr, entry]) => {
                     const ei = +eiStr;
                     const pid = entry.PayTypeId || '-1';
                     const key = codeKey(entry.LaborLevel, pid);
@@ -979,9 +984,7 @@
                         grid[ci][di] = { hours: parseFloat(entry.Duration), existing: entry, ei };
                     }
                 });
-            });
-
-            const di = +Object.entries(state.days).find(([, d]) => d.date === today)[0];
+            }
             const fakeInputs = rows.map((r, ci) => {
                 const inp = document.createElement('input');
                 inp.className = 'pcty-cell';
